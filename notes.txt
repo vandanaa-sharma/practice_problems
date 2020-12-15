@@ -1,0 +1,37 @@
+C++ compilers -
+1. GCC - GNU Compiler Collection
+2. MinGW - Minimalist GNU for Windows
+3. MSVC - Microsoft Visual C++
+4. Clang
+
+
+
+Regex matching for alphanuneric string - 
+--   "^[a-zA-Z0-9]*$"
+
+^ : start of string
+[ : beginning of character group
+a-z : any lowercase letter
+A-Z : any uppercase letter
+0-9 : any digit
+] : end of character group
+* : zero or more of the given characters
+$ : end of string
+
+Define base regex - const regex base_regex("^[a-zA-Z]*$");
+
+To get ASCII value of a character - cast it to int
+65- 90 --> A-Z
+97--122 --> a-z
+
+
+header - <bits/stdc++.h>
+
+Template class syntax - 
+
+template <typename T>
+class vector {
+};
+
+
+Template function syntax - 

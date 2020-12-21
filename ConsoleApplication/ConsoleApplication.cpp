@@ -6,6 +6,9 @@
 #include <regex>
 #include <string>
 #include "vector.h"
+#include "SmartPointer.h"
+#include <crtdbg.h>
+#include "VirtualInheritance.h"
 
 using namespace std;
 void printSpecialCharacters(string s);
@@ -45,14 +48,14 @@ int main()
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 02 - Implementation of vector
-	project::vector<int> v;
-	for (int i = 0; i < 40; i++)
-	{
-		v.push_back(i);
-	}
-	cout << v[23] << endl;
+	//project::vector<int> v;
+	//for (int i = 0; i < 40; i++)
+	//{
+	//	v.push_back(i);
+	//}
+	//cout << v[39] << endl;
 
-	/* -----------------------------------------------------------------------*/
+	///* -----------------------------------------------------------------------*/
 
 	// Problem 04 - template function
 	cout << GetMax(7, 9) << endl;
@@ -60,21 +63,28 @@ int main()
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 05 - const pointer
-	const int* i;
-	//*i = 10;              // compile error
+	const int* i = nullptr;
+	//*i = 10;                // compile error
 	int* const p = new int;
 	int j = 9;
 	//p = &j;                 // compile error - const after * --> pointer is constant
 
+	delete p;
+	delete i;
+
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 06 - Smart Pointer
-
+	SmartPointer<int> sp(new int);
+	*sp = 10;
+	cout << "pointer value - " << *sp << endl;
 
 
 	/* -----------------------------------------------------------------------*/
 
-	// Problem 07
+	// Problem 07 - Virtual Inheritance
+	D objectD;
+	objectD.printA();
 
 
 	/* -----------------------------------------------------------------------*/
@@ -127,6 +137,7 @@ int main()
 
 	/* -----------------------------------------------------------------------*/
 
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
 

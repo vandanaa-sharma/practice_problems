@@ -5,6 +5,8 @@ C++ compilers -
 4. Clang
 
 
+std::regex_match only returns true when the entire input sequence has been matched, while std::regex_search will succeed even if only a sub-sequence matches the regex.
+
 
 Regex matching for alphanuneric string - 
 --   "^[a-zA-Z0-9]*$"
@@ -35,3 +37,111 @@ class vector {
 
 
 Template function syntax - 
+template <class T>
+T GetMax(const& T a, const& T b) {
+	a < b ? return b : return a;
+}
+
+
+Using the mutable keyword as storage class specifier, the object can be modified within a const function
+
+To make a pointer constant, we have to put the const keyword to the right of the *.
+Other wise the pointer is a pointer to a const variable.
+
+
+*i = 10;  will give compile error if const int* i;
+but i = &j;
+j++ will not;
+
+
+DATA TYPE	         SIZE (IN BYTES)	RANGE
+SHORT INT	              2	           -32,768 TO 32,767
+UNSIGNED SHORT INT	      2	            0 TO 65,535
+UNSIGNED INT	              4	            0 TO 4,294,967,295
+INT	                      4	           -2,147,483,648 TO 2,147,483,647
+LONG INT	              8	           -2,147,483,648 TO 2,147,483,647
+UNSIGNED LONG INT	      8	           
+LONG LONG INT	              8	           -(2^63) TO (2^63)-1
+UNSIGNED LONG LONG INT	      8	            0 TO 18,446,744,073,709,551,615
+SIGNED CHAR	              1	           -128 TO 127
+UNSIGNED CHAR	              1             0 TO 255
+float                         4
+double                        8
+long double                  12
+wchar_t                    2 or 4
+
+short/long/ + signed/unsigned --> int    signed/unsigned  ---> char
+1 byte = 8 bits
+
+
+Types of smart pointers - 
+1. unique_ptr - only one pointer can point to the object pointed at by unique pointer. 
+make_unique, move
+
+2. shared_ptr - allows multiple pointers to point to object being pointed at. 
+Maintains a reference count
+make_shared, use_count()
+
+3. weak_ptr - same as shared_ptr. Does not maintain a reference count,
+
+
+explicit keyword prevents the compiler from implicit conversions during constructor call
+
+Syntax for move contructor -- 
+className(toObject && fromObject) {};
+
+
+
+To detect memory leaks - 
+#include <crtdbg.h>
+CrtDumpMemoryLeaks();
+
+Assertions - 
+1. header - C- assert.h, C++ - cassert
+Assertions are used to during debugging/development
+
+
+Types of pre-processor directives - (processed before compilation)
+1. Macro - #define
+- Can be used to define variables or functions
+#define AREA(l, b) (l * b)  - replaces expression in first bracket with that in second
+#define LIMIT 5
+2. Inclusion - #include
+3. Conditional compilation 
+- #ifdef #endif, #ifndef
+- #undef - use to undefine a macro
+- #pragma - compiler dependent usage
+If the replacement text for a macro or symbolic constant is longer than the remainder of the line, a backslash (\) must be placed at the end of the line indicating that the replacement text continues on the next line.  For example:
+
+#define    RECTANGLE_AREA(p, q)  \
+(p)*(q)
+
+You use macro - #ifndefin --------- #endif in  header files to avoid multilple inclusion
+
+
+Lock free multithreading using atomic operations
+- Atomic operations 
+  1. Load/Store
+  2. Read, Modify, Write
+     - Increment/Decrement, Compare and swap, ..
+
+Mutex vs Semaphore - 
+Mutex can be signalled only by the thread that called wait, semaphore can be signalled by other thread
+
+
+Since 0 is a legal address, assigning (void *)0 to a void* pointer type is fine.
+
+Atomic operations - 
+
+An operation acting on shared memory is atomic if it completes in a single step relative to other threads.
+Atomic operations -
+1. Load/Store
+2. Read,Modify,Write - Increment, Decrement, Compare and Swap, etc.
+
+-- ABA problem in lock free stack implementation
+ - solution main pop count 
+
+Virtual Inheritance is the solution to the diamond problem in inheritance, it creates only one copy of the parent in the grandchild. 
+
+
+When a dervied class pointer points to object of base class, if the destructor of base class is not virtual, only base class destructor is called.

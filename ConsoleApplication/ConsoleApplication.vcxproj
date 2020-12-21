@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SmartPointer.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <ItemGroup>

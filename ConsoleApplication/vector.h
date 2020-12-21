@@ -14,13 +14,13 @@ namespace project {
 	public:
 		vector()
 		{
-			array = new int[size];
+			array = new T[size];
 		}
 
 		void push_back(T i) {
 
 			if (currentSize == size - 1) {
-				int* newArray = new int[currentSize * 2];
+				T* newArray = new T[currentSize * 2];
 				for (int i = 0; i < currentSize; i++) {
 					newArray[i] = array[i];
 				}
@@ -41,8 +41,8 @@ namespace project {
 			return array[i];
 		}
 
-		~vector() {
-
+		virtual ~vector() {
+			delete[] array;
 		}
 	};
 }

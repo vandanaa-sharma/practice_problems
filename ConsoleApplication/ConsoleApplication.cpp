@@ -5,10 +5,13 @@
 #include <iostream>
 #include <regex>
 #include <string>
+#include <stack>
 #include "vector.h"
 #include "SmartPointer.h"
 #include <crtdbg.h>
 #include "VirtualInheritance.h"
+#include "02_LinkedList.h"
+#include "10_BinaryTree_linkedlist_representation.h"
 
 using namespace std;
 void printSpecialCharacters(string s);
@@ -35,6 +38,47 @@ public:
 	}
 };
 
+/* ------------------- Merge Sort --------------------------- */
+
+/* End ----------------------- Merge Sort ------------------- */
+
+
+/* -------------------- Selection Sort -------------------------- */
+
+void selectionSort(int arr[], int size) {
+	for (int i = 0; i < size; i++) {
+		int min = arr[i];
+		int index = i;
+		for (int j = i; j < size; j++) {
+			if (arr[j] < min) {
+				min = arr[j];
+				index = j;
+			}
+		}
+		if (arr[i] != min) {
+			int temp = arr[i];
+			arr[i] = min;
+			arr[index] = temp;
+		}
+	}
+}
+
+/* End ----------------------- Selection Sort -------------------- */
+
+/* ------------------ Bubble Sort -------------------------- */
+void bubbleSort(int arr[], int size) {
+	for (int i = 0; i < size - 1; i++) {
+		for (int j = 0; j < size - i - 1; j++) {
+			if (arr[j] > arr[j+1]) {
+				int temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+}
+
+/* End ----------------------- Bubble Sort------------------- */
 
 int main()
 {
@@ -58,55 +102,111 @@ int main()
 	///* -----------------------------------------------------------------------*/
 
 	// Problem 04 - template function
-	cout << GetMax(7, 9) << endl;
+	//cout << GetMax(7, 9) << endl;
 
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 05 - const pointer
-	const int* i = nullptr;
-	//*i = 10;                // compile error
-	int* const p = new int;
-	int j = 9;
-	//p = &j;                 // compile error - const after * --> pointer is constant
+	//const int* i = nullptr;
+	////*i = 10;                // compile error
+	//int* const p = new int;
+	//int j = 9;
+	////p = &j;                 // compile error - const after * --> pointer is constant
 
-	delete p;
-	delete i;
+	//delete p;
+	//delete i;
 
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 06 - Smart Pointer
-	SmartPointer<int> sp(new int);
-	*sp = 10;
-	cout << "pointer value - " << *sp << endl;
+	//SmartPointer<int> sp(new int);
+	//*sp = 10;
+	//cout << "pointer value - " << *sp << endl;
 
 
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 07 - Virtual Inheritance
-	D objectD;
-	objectD.printA();
+	//D objectD;
+	//objectD.printA();
 
 
 	/* -----------------------------------------------------------------------*/
 
-	// Problem 08
+	// Problem 08 - exchange kth node of linked list from both ends
+	//LinkedList list =  LinkedList();
+	//list.add(0);
+	//list.add(1);
+	//list.add(2);
+	//list.add(3);
+	//list.add(4);
+	//list.add(5);
+	//list.add(6);
+	//list.add(7);
+	//list.add(8);
+	//list.add(9);
+	//list.add(10);
 
+	//list.print();
+	//int k;
+	//cout << "Enter index to swap in list " << endl;
+	//cin >> k;
+	//list.exchangeNode(k);
 
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 09
+	//BinarySearchTree tree;
+	//tree.add(15);
+	//tree.add(32);
+	//tree.add(30);
+	//tree.add(37);
+	//tree.add(11);
+	//tree.add(9);
+	//tree.add(13);
 
-
+	/*
+	tree.printPretty();
+	cout << endl << "Tree Height - " << tree.getHeight() << endl;
+	*/
 
 	/* -----------------------------------------------------------------------*/
 
-	// Problem 10
+	// Problem 10 - level order traversal
 
-
+	//tree.printLevels();
 
 	/* -----------------------------------------------------------------------*/
 
-	// Problem 11
+	// Problem 11 - Sorting algorithms
+
+
+	// 01 - Merge Sort
+	//vector<int> mArray = { 6,5,7,3 };
+	//mergeSort(array, 0, array.size());
+
+	// 02 - Selection sort
+
+	int sArray[] = { 6, 5, 7, 3, 11, 1 };
+	int size = sizeof(sArray) / sizeof(sArray[0]);
+	selectionSort(sArray, size);
+
+	// 03 - Bubble sort
+
+	int bArray[] = { 6, 5, 7, 3, 11, 1 };
+	int bsize = sizeof(bArray) / sizeof(bArray[0]);
+	bubbleSort(bArray, bsize);
+
+	cout << "Sorted Array - ";
+	for (int y = 0; y < bsize; y++) {
+		cout << bArray[y] << " ";
+	}
+	cout << endl;
+
+	// 04 - Quick Sort
+
+	// 05 - Heap sort
+
 
 
 

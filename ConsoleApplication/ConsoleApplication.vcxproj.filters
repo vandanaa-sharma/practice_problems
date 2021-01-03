@@ -24,6 +24,39 @@
     <ClInclude Include="SmartPointer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VirtualInheritance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="03_DoublyLinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="04_CircularLinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="05_Stack_using_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="06_Stack_using_linkedlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="07_Queue_using_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="08_Queue_using_linkedlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="09_BinaryTree_array_representation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="10_BinaryTree_linkedlist_representation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="01_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="02_LinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

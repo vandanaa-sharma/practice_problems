@@ -116,7 +116,7 @@ If the replacement text for a macro or symbolic constant is longer than the rema
 #define    RECTANGLE_AREA(p, q)  \
 (p)*(q)
 
-You use macro - #ifndefin --------- #endif in  header files to avoid multilple inclusion
+You use macro - #ifndef--------- #endif in  header files to avoid multilple inclusion
 
 
 Lock free multithreading using atomic operations
@@ -145,3 +145,80 @@ Virtual Inheritance is the solution to the diamond problem in inheritance, it cr
 
 
 When a dervied class pointer points to object of base class, if the destructor of base class is not virtual, only base class destructor is called.
+
+Explicit keyword prevents type conversion during object construction
+
+pragma once - faster than 
+#ifndef #define--------- #endif
+
+
+Virtual tables - creates a table for virtual functions in base and derived classes
+when pointer of base type points to object of derived type --> 
+and derived class overrides virtual function a() from base -->
+when baspointer = & derviedObject
+basePointer --> a() ---> will call the overridden method by checking the value of pbject being pointed at and fetching value from vtable
+
+
+void* -- > used in cases where pointer can type to different data types --> generic methods
+
+Difference between --> 
+HashMap
+HashTable
+LinkedHashMap
+TreeMap
+
+
+Lowest common ancestor of 2 nodes - 
+compare data at each node with values you are looking for -->
+if node value is greater than both -- go left
+else go right
+when both conditions are false --> the node you are at is the common ancestor
+
+To find size of an array - 
+int size = sizeof(arr) / sizeof(arr[0]);
+
+
+Sorting algos - 
+
+1. MergeSort
+   mergeSort(arr, left, right) {
+      if(left>=right) return
+      middle = left+right-1/2
+      mergeSort(arr, left, middle)
+      mergeSort(arr, middle+1, right)
+      merge(arr,left, middle,right)
+   }
+
+   merge(arr, left, middle right) {
+      n1 = middle-left+1
+      n2 = middle-right
+      
+      leftarray (left----n1)
+      rightarray(middle+1-----n2)
+
+      i=0,j=0,k=left
+
+      while(i=0 && j=0)
+        if(left[i] < right[j]
+            array[k] = left[i], i++
+        else
+            array[k] = right[j], j++
+	k++
+
+      while(i < n1) --> arr[k] = left[i] i++ k++
+      while(j < n2) --> arr[k] = right[j] j++ k++
+   }
+
+
+2. Selection Sort -
+   replace top element with lowest in remaining array
+
+3. Bubble Sort - 
+ for i = 0 to i = size - 1
+   for j = 0 to j = size - i - 1
+      if( arr[j] > arr [j+1]) swap
+
+-- Bubbles out the highest element and keeps reducing the size of array to sort from the end
+
+  
+4. Insertion Sort - 

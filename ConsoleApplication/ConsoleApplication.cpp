@@ -80,6 +80,20 @@ void bubbleSort(int arr[], int size) {
 
 /* End ----------------------- Bubble Sort------------------- */
 
+/* ------------------- Insertion Sort --------------------------- */
+
+void insertionSort(int arr[], int size) {
+	int key = 1;
+	for (int i = 0; i < size-1; i++) {
+		for (int j = key; j > 0; j--) {
+			/*if()*/
+		}
+	}
+}
+
+
+/* End ----------------------- Insertion Sort ------------------- */
+
 int main()
 {
 	// Problem 01 - Print special characters in string
@@ -215,12 +229,28 @@ int main()
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 12
+	// Padding and Packing
+	struct A {
+		char p;
+		char q;
+		int i;
+	};
+	cout << "Size of structure A " << sizeof(A) << endl;
+	// | p | q | - | - | i | i | i | i |------------------- 32 bit (4 bytes) processor
 
-
+	#pragma pack(1) // ------------------ This prevents padding
+	struct B {
+		char p;
+		char q;
+		int i;
+	};
+	cout << "Size of structure B " << sizeof(B) << endl;
+	// | p | q | i | i | i | i |------------------- no padding
 
 	/* -----------------------------------------------------------------------*/
 
-	// Problem 13
+	// Problem 13 - Function Pointers
+	// store, call, pass as argument, return type, use in quick sort
 
 
 	/* -----------------------------------------------------------------------*/

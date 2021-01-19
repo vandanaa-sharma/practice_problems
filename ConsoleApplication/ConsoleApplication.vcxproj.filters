@@ -48,13 +48,25 @@
     <ClInclude Include="09_BinaryTree_array_representation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="10_BinaryTree_linkedlist_representation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="01_List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="02_LinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="11_Minimum_Heap_Using_Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="12_MaxHeap_PriorityQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="13_Insertionbased_PriorityQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="14_Binary_tree_operations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="10_BinaryTree_LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,3 +1,8 @@
 ﻿  ConsoleApplication.cpp
 d:\vandana\practice_problems\consoleapplication\consoleapplication\02_linkedlist.h(133): warning C4101: 'middleIndex': unreferenced local variable
+d:\vandana\practice_problems\consoleapplication\consoleapplication\11_minimum_heap_using_array.h(22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\vandana\practice_problems\consoleapplication\consoleapplication\11_minimum_heap_using_array.h(93): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\vandana\practice_problems\consoleapplication\consoleapplication\12_maxheap_priorityqueue.h(19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\vandana\practice_problems\consoleapplication\consoleapplication\12_maxheap_priorityqueue.h(26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\vandana\practice_problems\consoleapplication\consoleapplication\12_maxheap_priorityqueue.h(57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   ConsoleApplication.vcxproj -> D:\vandana\practice_problems\ConsoleApplication\x64\Debug\ConsoleApplication.exe

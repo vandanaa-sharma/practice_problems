@@ -102,10 +102,6 @@ public:
 	int getLength() {
 		Node* currentNode = head;
 		int length = 1;
-		if (currentNode->next == nullptr)
-		{
-			return length;
-		}
 		while (currentNode->next != nullptr) {
 			length++;
 			currentNode = currentNode->next;

@@ -161,7 +161,11 @@
     <ClInclude Include="07_Queue_using_array.h" />
     <ClInclude Include="08_Queue_using_linkedlist.h" />
     <ClInclude Include="09_BinaryTree_array_representation.h" />
-    <ClInclude Include="10_BinaryTree_linkedlist_representation.h" />
+    <ClInclude Include="10_BinaryTree_LinkedList.h" />
+    <ClInclude Include="11_Minimum_Heap_Using_Array.h" />
+    <ClInclude Include="12_MaxHeap_PriorityQueue.h" />
+    <ClInclude Include="13_Insertionbased_PriorityQueue.h" />
+    <ClInclude Include="14_Binary_tree_operations.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SmartPointer.h" />
     <ClInclude Include="vector.h" />

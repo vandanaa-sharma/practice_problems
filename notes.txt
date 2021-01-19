@@ -26,6 +26,9 @@ To get ASCII value of a character - cast it to int
 65- 90 --> A-Z
 97--122 --> a-z
 
+'0' ->> ASCII value 48 
+'7' - '0' == 7 ---> atoi operation
+
 
 header - <bits/stdc++.h>
 
@@ -241,7 +244,8 @@ Insert the lowest element in the current iteration at the current position
 
 5. Quick Sort
 
-6. Heap Sort
+6. Heap Sort - Min heap
+
 
 
 ------------------------------------------------------------------------
@@ -262,7 +266,57 @@ Can take values 1, 2, 4, 8
 4. .exe is created on linking ( static libraries are loaded)
 5.  dynamic libraries are loaded during execution
 
+Friend function is declared within the class - 
+A function with that signature can modify the private data members of this class
 
+In inheritance, a function declared as a friend of derived class D, can access private data members of C ONLY!
+
+
+atoi functions ---> ASCII to integer
+
+BIG Endian stores values from low -->high memory addresses
+Little Endian from high to low
+
+
+STL - 
+
+  For Map read value with iterator as - 
+   it->first, it->second
+  For set, vector -
+   *it
+
+  sort function --> #include <algorithm>
+   sort(someCollectiom.begin(), someCollection.end());
+
+  Iteration :  for(auto it = someCollection.begin(): it != someCollection.end(); it++)
+	- auto can be replaced by map<int, int> :: iterator for example
+
+  Find - if( someCollection.find("value") != someCollection.end())
+
+  for set, use insert function to add value
+
+C++ map by default is ordered by key
+
+In inheritance, you have to override all overloaded methods.
+
+C++11 features - (the previosu version was C++03)
+Unordered containers
+- set, map
+thread class
+noexcept keypword (put it ahead of function that does not throw exception)
+enum class --> strongly typed enums accessed using scope resolution operator
+smart pointers
+nullptr keyword
+= delete for operators and member functions you want to delete in a class
+auto keyword
+= default for default constructors / destructors
+
+range based for loops --> for (int i : aVector) {}
+
+
+To get a random number between 65 and 23 -->
+#include <stdlib.h>
+25 + ( std::rand() % ( 63 - 25 + 1 ) )
 
 TODO - 
 
@@ -273,3 +327,12 @@ https://www.educative.io/blog/top-five-concurrency-interview-questions-for-softw
 https://www.educative.io/blog/multithreading-and-concurrency-fundamentals
 
 Implement one lock free data structure
+
+Interview pre for C++ -
+https://www.youtube.com/playlist?list=PLk6CEY9XxSIDy8qVHZV-Nf-r9f2BkRZ6p
+
+Readup on casting - static, const, reinterpret ..
+What is precompiled header?
+what is a multimap, ordered/unordered maps?
+how is set internally implemented - ordered (default), unordered
+Find the lowest common ancestor

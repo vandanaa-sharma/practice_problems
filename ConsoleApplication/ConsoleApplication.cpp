@@ -146,10 +146,11 @@ int main()
 
 	// Problem 05 - const pointer
 	const int* i = nullptr;
-	//*i = 10;                // compile error
+	//*i = 10;                // compile error - value at memory cannot be modified
 	int* const p = new int;
 	int j = 9;
-	//p = &j;                 // compile error - const after * --> pointer is constant
+	//p = &j;                 // compile error - const after * --> pointer is constant,
+	                          // pointer cannot be modified
 
 	delete p;
 	delete i;

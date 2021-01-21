@@ -1,12 +1,23 @@
+
 C++ compilers -
 1. GCC - GNU Compiler Collection
 2. MinGW - Minimalist GNU for Windows
 3. MSVC - Microsoft Visual C++
 4. Clang
 
+--------------------------------------------------------------------------------------------------------------------------
 
-std::regex_match only returns true when the entire input sequence has been matched, while std::regex_search will succeed even if only a sub-sequence matches the regex.
+Mutable, explicit and volatile keywords - 
+- A mutable variable can be modified in a const function
+- const functions are member functions - object called by this function cannot be modified
+- volatile keyword tells the compiler not to optimize
+- Using the mutable keyword as storage class specifier, the object can be modified within a const function
+- explicit keyword prevents the compiler from implicit conversions during constructor call
 
+
+--------------------------------------------------------------------------------------------------------------------------
+std::regex_match only returns true when the entire input sequence has been matched, 
+while std::regex_search will succeed even if only a sub-sequence matches the regex.
 
 Regex matching for alphanuneric string - 
 --   "^[a-zA-Z0-9]*$"
@@ -22,6 +33,8 @@ $ : end of string
 
 Define base regex - const regex base_regex("^[a-zA-Z]*$");
 
+--------------------------------------------------------------------------------------------------------------------------
+
 To get ASCII value of a character - cast it to int
 65- 90 --> A-Z
 97--122 --> a-z
@@ -29,8 +42,7 @@ To get ASCII value of a character - cast it to int
 '0' ->> ASCII value 48 
 '7' - '0' == 7 ---> atoi operation
 
-
-header - <bits/stdc++.h>
+--------------------------------------------------------------------------------------------------------------------------
 
 Template class syntax - 
 
@@ -45,17 +57,30 @@ T GetMax(const& T a, const& T b) {
 	a < b ? return b : return a;
 }
 
-
-Using the mutable keyword as storage class specifier, the object can be modified within a const function
+--------------------------------------------------------------------------------------------------------------------------
 
 To make a pointer constant, we have to put the const keyword to the right of the *.
 Other wise the pointer is a pointer to a const variable.
-
+	const int* i = nullptr;
+	//*i = 10;                // compile error - value at memory cannot be modified
+	int* const p = new int;
+	int j = 9;
+	//p = &j;                 // compile error - const after * --> pointer is constant,
+	                          // pointer cannot be modified
 
 *i = 10;  will give compile error if const int* i;
 but i = &j;
 j++ will not;
 
+int* const p = new int;
+int j = 9;
+p = &j; - compile error - const after * --> pointer is constant, pointer cannot be modified
+
+
+Since 0 is a legal address, assigning (void *)0 to a void* pointer type is fine
+void* -- > used in cases where pointer can type to different data types --> generic methods
+
+--------------------------------------------------------------------------------------------------------------------------
 
 DATA TYPE	         SIZE (IN BYTES)	RANGE
 SHORT INT	              2	           -32,768 TO 32,767
@@ -76,6 +101,7 @@ wchar_t                    2 or 4
 short/long/ + signed/unsigned --> int    signed/unsigned  ---> char
 1 byte = 8 bits
 
+--------------------------------------------------------------------------------------------------------------------------
 
 Types of smart pointers - 
 1. unique_ptr - only one pointer can point to the object pointed at by unique pointer. 
@@ -85,24 +111,32 @@ make_unique, move
 Maintains a reference count
 make_shared, use_count()
 
-3. weak_ptr - same as shared_ptr. Does not maintain a reference count,
-
-
-explicit keyword prevents the compiler from implicit conversions during constructor call
+3. weak_ptr - same as shared_ptr. Does not maintain a reference count
 
 Syntax for move contructor -- 
 className(toObject && fromObject) {};
 
+--------------------------------------------------------------------------------------------------------------------------
 
+Types of casts - 
+
+Static
+Const
+Dynamic
+Reinterpret
+
+--------------------------------------------------------------------------------------------------------------------------
 
 To detect memory leaks - 
 #include <crtdbg.h>
 CrtDumpMemoryLeaks();
 
+--------------------------------------------------------------------------------------------------------------------------
 Assertions - 
 1. header - C- assert.h, C++ - cassert
 Assertions are used to during debugging/development
 
+--------------------------------------------------------------------------------------------------------------------------
 
 Types of pre-processor directives - (processed before compilation)
 1. Macro - #define
@@ -121,39 +155,13 @@ If the replacement text for a macro or symbolic constant is longer than the rema
 
 You use macro - #ifndef--------- #endif in  header files to avoid multilple inclusion
 
-
-Lock free multithreading using atomic operations
-- Atomic operations 
-  1. Load/Store
-  2. Read, Modify, Write
-     - Increment/Decrement, Compare and swap, ..
-
-Mutex vs Semaphore - 
-Mutex can be signalled only by the thread that called wait, semaphore can be signalled by other thread
-
-
-Since 0 is a legal address, assigning (void *)0 to a void* pointer type is fine.
-
-Atomic operations - 
-
-An operation acting on shared memory is atomic if it completes in a single step relative to other threads.
-Atomic operations -
-1. Load/Store
-2. Read,Modify,Write - Increment, Decrement, Compare and Swap, etc.
-
--- ABA problem in lock free stack implementation
- - solution main pop count 
-
-Virtual Inheritance is the solution to the diamond problem in inheritance, it creates only one copy of the parent in the grandchild. 
-
-
-When a dervied class pointer points to object of base class, if the destructor of base class is not virtual, only base class destructor is called.
-
-Explicit keyword prevents type conversion during object construction
-
 pragma once - faster than 
 #ifndef #define--------- #endif
 
+--------------------------------------------------------------------------------------------------------------------------
+
+Virtual Inheritance is the solution to the diamond problem in inheritance, it creates only one copy of the parent in the grandchild. 
+When a dervied class pointer points to object of base class, if the destructor of base class is not virtual, only base class destructor is called.
 
 Virtual tables - creates a table for virtual functions in base and derived classes
 when pointer of base type points to object of derived type --> 
@@ -164,15 +172,9 @@ How does this work ?
 -- When a function is made virtual, in the object space of base and derived objects a pointer (vfptr) is created instead of address of the actual function
 -- In the virtual table vfptr points to correct function based on object type instead of pointer type.
 
+Late Binding - derived object has a vptr -->pointing to the corresponding function in dervied class in virtual table
 
-void* -- > used in cases where pointer can type to different data types --> generic methods
-
-Difference between --> 
-HashMap
-HashTable
-LinkedHashMap
-TreeMap
-
+--------------------------------------------------------------------------------------------------------------------------
 
 Lowest common ancestor of 2 nodes - 
 compare data at each node with values you are looking for -->
@@ -180,11 +182,12 @@ if node value is greater than both -- go left
 else go right
 when both conditions are false --> the node you are at is the common ancestor
 
+--------------------------------------------------------------------------------------------------------------------------
+
 To find size of an array - 
 int size = sizeof(arr) / sizeof(arr[0]);
 
-Late Binding - derived object has a vptr -->pointing to the corresponding function in dervied class in virtual table
-
+--------------------------------------------------------------------------------------------------------------------------
 
 Sorting algos - 
 
@@ -246,15 +249,14 @@ Insert the lowest element in the current iteration at the current position
 
 6. Heap Sort - Min heap
 
-
-
-------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
 Padding and packing - 
 #pragma pack(8) --> Default
 Can take values 1, 2, 4, 8
 "wordsize" is 4 bytes for 32 bit machine and 8 bytes for 64 bit machine
 
+--------------------------------------------------------------------------------------------------------------------------
 
 .dll, .so --> dynamic libraries for windows and linux respectively
 .lib, .a  --> static libraries for windows and linux respectively
@@ -266,38 +268,55 @@ Can take values 1, 2, 4, 8
 4. .exe is created on linking ( static libraries are loaded)
 5.  dynamic libraries are loaded during execution
 
+--------------------------------------------------------------------------------------------------------------------------
+
 Friend function is declared within the class - 
 A function with that signature can modify the private data members of this class
 
 In inheritance, a function declared as a friend of derived class D, can access private data members of C ONLY!
 
+Member functions of a friend class can access private data members of the given class
+
+--------------------------------------------------------------------------------------------------------------------------
 
 atoi functions ---> ASCII to integer
 
 BIG Endian stores values from low -->high memory addresses
 Little Endian from high to low
 
+	unsigned int i = 1;
+	char* c = (char*)&i;
 
-STL - 
+	if (*c) {
+		cout << "Little Endain " << endl;
+	}
+	else {
+		cout << "Big Endain " << endl;
+	}
+
+--------------------------------------------------------------------------------------------------------------------------
+STL - header - <bits/stdc++.h> in test platforms
 
   For Map read value with iterator as - 
    it->first, it->second
   For set, vector -
    *it
-
-  sort function --> #include <algorithm>
+  Sort function --> #include <algorithm>
    sort(someCollectiom.begin(), someCollection.end());
-
   Iteration :  for(auto it = someCollection.begin(): it != someCollection.end(); it++)
 	- auto can be replaced by map<int, int> :: iterator for example
-
   Find - if( someCollection.find("value") != someCollection.end())
+  For set, use insert function to add value
+  vector maintains a capacity variable which is in powers of 2 and can be modified by vector.resize()
+  it doubles the capaclity everytime data it reaches capacity - 1, created new memory of double the size and copies all elements
+  C++ map by default is ordered by key
+  ordered map and ordered set are the defaults , map is implemented using Red Black Tree
+  unordered map , unordered set are C++11, and implemented using hashmap
 
-  for set, use insert function to add value
-
-C++ map by default is ordered by key
 
 In inheritance, you have to override all overloaded methods.
+
+--------------------------------------------------------------------------------------------------------------------------
 
 C++11 features - (the previosu version was C++03)
 Unordered containers
@@ -313,10 +332,41 @@ auto keyword
 
 range based for loops --> for (int i : aVector) {}
 
+--------------------------------------------------------------------------------------------------------------------------
 
 To get a random number between 65 and 23 -->
 #include <stdlib.h>
 25 + ( std::rand() % ( 63 - 25 + 1 ) )
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Multi threading - 
+
+Mutex vs Semaphore - 
+Mutex can be signalled only by the thread that called wait, semaphore can be signalled by other thread
+
+What happens if you call thread.join twice?
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Lock free multithreading using atomic operations
+- Atomic operations 
+  1. Load/Store
+  2. Read, Modify, Write
+     - Increment/Decrement, Compare and swap, ..
+
+Atomic operations - 
+
+An operation acting on shared memory is atomic if it completes in a single step relative to other threads.
+Atomic operations -
+1. Load/Store
+2. Read,Modify,Write - Increment, Decrement, Compare and Swap, etc.
+
+-- ABA problem in lock free stack implementation
+ - solution main pop count 
+
+
+--------------------------------------------------------------------------------------------------------------------------
 
 TODO - 
 
@@ -335,4 +385,15 @@ Readup on casting - static, const, reinterpret ..
 What is precompiled header?
 what is a multimap, ordered/unordered maps?
 how is set internally implemented - ordered (default), unordered
-Find the lowest common ancestor
+
+--------------------------------------
+What is auto_ptr
+How is shared pointer internally implemented
+Memory mapping in windows
+External debugging tool
+dynamic cast/re-interpret cast
+-------------------------------------------
+
+Add a list of data structures vs problems covered above
+
+

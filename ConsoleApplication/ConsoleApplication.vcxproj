@@ -166,8 +166,11 @@
     <ClInclude Include="12_MaxHeap_PriorityQueue.h" />
     <ClInclude Include="13_Insertionbased_PriorityQueue.h" />
     <ClInclude Include="14_Binary_tree_operations.h" />
+    <ClInclude Include="MultiThreading.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SmartPointer.h" />
+    <ClInclude Include="sorts.h" />
+    <ClInclude Include="TupleUsage.h" />
     <ClInclude Include="vector.h" />
     <ClInclude Include="VirtualInheritance.h" />
   </ItemGroup>

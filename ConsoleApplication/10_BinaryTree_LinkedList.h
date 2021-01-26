@@ -18,8 +18,7 @@ class BinarySearchTree
 	};
 
 	Node* root = nullptr;
-	int dataToAdd, count = 0;
-	map<int, vector<Node*>> levelMap;
+
 
 public:
 

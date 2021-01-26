@@ -7,7 +7,6 @@
 using namespace std;
 
 
-
 class BinaryTree_Operations {
 private:
 	struct Node {
@@ -26,10 +25,10 @@ private:
 	}
 
 public:
-	//1. Create a balanced Binary Tree
-	//2. Insertion - Binary search Tree
-	//3. Print nodes at one level
-	//4. Spiral Traversal - binary tree
+
+	//1. Insertion - Binary search Tree
+	//2. Print nodes at one level  --> BFS
+	//3. Spiral Traversal - binary tree
 
 	Node* insertInBST(Node* currentRoot, int data) {
 		if (currentRoot == nullptr) {
@@ -60,9 +59,9 @@ public:
 					Node* n = s1.top();
 					cout << n->data << " ";
 					if(n->left != nullptr)
-						s2.push(n->right);
-					if(n->right != nullptr)
 						s2.push(n->left);
+					if(n->right != nullptr)
+						s2.push(n->right);
 					s1.pop();
 				}
 				while (!s2.empty()) {

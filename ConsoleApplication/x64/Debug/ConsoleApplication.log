@@ -1,8 +1,98 @@
 ﻿  ConsoleApplication.cpp
-d:\vandana\practice_problems\consoleapplication\consoleapplication\02_linkedlist.h(133): warning C4101: 'middleIndex': unreferenced local variable
+d:\vandana\practice_problems\consoleapplication\consoleapplication\02_linkedlist.h(129): warning C4101: 'middleIndex': unreferenced local variable
 d:\vandana\practice_problems\consoleapplication\consoleapplication\11_minimum_heap_using_array.h(22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 d:\vandana\practice_problems\consoleapplication\consoleapplication\11_minimum_heap_using_array.h(93): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 d:\vandana\practice_problems\consoleapplication\consoleapplication\12_maxheap_priorityqueue.h(19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 d:\vandana\practice_problems\consoleapplication\consoleapplication\12_maxheap_priorityqueue.h(26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 d:\vandana\practice_problems\consoleapplication\consoleapplication\12_maxheap_priorityqueue.h(57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\vandana\practice_problems\consoleapplication\consoleapplication\multithreading.h(83): warning C4305: 'initializing': truncation from 'double' to 'float'
+d:\vandana\practice_problems\consoleapplication\consoleapplication\consoleapplication.cpp(288): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(785): warning C4244: '=': conversion from '_Ty' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty=float
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(784): note: see reference to function template instantiation 'std::tuple<float,std::string> &std::tuple<float,std::string>::operator =<double,const char*,0>(std::tuple<double,const char *> &&) noexcept(false)' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(786): note: see reference to function template instantiation 'std::tuple<float,std::string> &std::tuple<float,std::string>::operator =<double,const char*,0>(std::tuple<double,const char *> &&) noexcept(false)' being compiled
+  d:\vandana\practice_problems\consoleapplication\consoleapplication\tupleusage.h(12): note: see reference to function template instantiation 'std::tuple<int,float,std::string> &std::tuple<int,float,std::string>::operator =<int,double,const char*,0>(std::tuple<int,double,const char *> &&) noexcept(false)' being compiled
+  d:\vandana\practice_problems\consoleapplication\consoleapplication\tupleusage.h(12): note: see reference to function template instantiation 'std::tuple<int,float,std::string> &std::tuple<int,float,std::string>::operator =<int,double,const char*,0>(std::tuple<int,double,const char *> &&) noexcept(false)' being compiled
+c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(236): warning C4244: 'initializing': conversion from '_Ty' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty=float
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(357): note: see reference to function template instantiation 'std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)' being compiled
+          with
+          [
+              _This=float,
+              _Ty=double,
+              _Other=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(358): note: see reference to function template instantiation 'std::_Tuple_val<_This>::_Tuple_val<_Ty>(_Other &&)' being compiled
+          with
+          [
+              _This=float,
+              _Ty=double,
+              _Other=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(357): note: see reference to function template instantiation 'std::tuple<float>::tuple<std::_Exact_args_t,_Ty,,0>(_Tag,_This2 &&)' being compiled
+          with
+          [
+              _Ty=double,
+              _Tag=std::_Exact_args_t,
+              _This2=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(357): note: see reference to function template instantiation 'std::tuple<float>::tuple<std::_Exact_args_t,_Ty,,0>(_Tag,_This2 &&)' being compiled
+          with
+          [
+              _Ty=double,
+              _Tag=std::_Exact_args_t,
+              _This2=double
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(357): note: see reference to function template instantiation 'std::tuple<std::string,float>::tuple<std::_Exact_args_t,const char(&)[7],_Ty,0>(_Tag,_This2,_Ty &&)' being compiled
+          with
+          [
+              _Ty=double,
+              _Tag=std::_Exact_args_t,
+              _This2=const char (&)[7]
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(357): note: see reference to function template instantiation 'std::tuple<std::string,float>::tuple<std::_Exact_args_t,const char(&)[7],_Ty,0>(_Tag,_This2,_Ty &&)' being compiled
+          with
+          [
+              _Ty=double,
+              _Tag=std::_Exact_args_t,
+              _This2=const char (&)[7]
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(468): note: see reference to function template instantiation 'std::tuple<int,std::string,float>::tuple<std::_Exact_args_t,_Ty,const char(&)[7],double,0>(_Tag,_This2 &&,const char (&)[7],double &&)' being compiled
+          with
+          [
+              _Ty=int,
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\tuple(468): note: see reference to function template instantiation 'std::tuple<int,std::string,float>::tuple<std::_Exact_args_t,_Ty,const char(&)[7],double,0>(_Tag,_This2 &&,const char (&)[7],double &&)' being compiled
+          with
+          [
+              _Ty=int,
+              _Tag=std::_Exact_args_t,
+              _This2=int
+          ]
+  d:\vandana\practice_problems\consoleapplication\consoleapplication\tupleusage.h(10): note: see reference to function template instantiation 'std::tuple<int,std::string,float>::tuple<int,const char(&)[7],double,0>(_This2 &&,const char (&)[7],double &&) noexcept(false)' being compiled
+          with
+          [
+              _This2=int
+          ]
+  d:\vandana\practice_problems\consoleapplication\consoleapplication\tupleusage.h(10): note: see reference to function template instantiation 'std::tuple<int,std::string,float>::tuple<int,const char(&)[7],double,0>(_This2 &&,const char (&)[7],double &&) noexcept(false)' being compiled
+          with
+          [
+              _This2=int
+          ]
   ConsoleApplication.vcxproj -> D:\vandana\practice_problems\ConsoleApplication\x64\Debug\ConsoleApplication.exe

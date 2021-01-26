@@ -16,24 +16,7 @@ Mutable, explicit and volatile keywords -
 
 
 --------------------------------------------------------------------------------------------------------------------------
-std::regex_match only returns true when the entire input sequence has been matched, 
-while std::regex_search will succeed even if only a sub-sequence matches the regex.
 
-Regex matching for alphanuneric string - 
---   "^[a-zA-Z0-9]*$"
-
-^ : start of string
-[ : beginning of character group
-a-z : any lowercase letter
-A-Z : any uppercase letter
-0-9 : any digit
-] : end of character group
-* : zero or more of the given characters
-$ : end of string
-
-Define base regex - const regex base_regex("^[a-zA-Z]*$");
-
---------------------------------------------------------------------------------------------------------------------------
 
 To get ASCII value of a character - cast it to int
 65- 90 --> A-Z
@@ -111,6 +94,8 @@ make_unique, move
 Maintains a reference count
 make_shared, use_count()
 
+----> shared pointer with custom deletor (for array of memory)
+
 3. weak_ptr - same as shared_ptr. Does not maintain a reference count
 
 Syntax for move contructor -- 
@@ -157,6 +142,16 @@ You use macro - #ifndef--------- #endif in  header files to avoid multilple incl
 
 pragma once - faster than 
 #ifndef #define--------- #endif
+
+
+Lambda functions - 
+Syntax - 
+[] (arg1, arg2) -> returnType {
+   definition
+}
+
+[] --> capture clause, empty -> no access to varaibles in enclosing scope, [=] pass by value, [&] pass by refernce
+       [=, &someValueByRef]  -> = is defaault for all member variables in scope
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -314,11 +309,40 @@ STL - header - <bits/stdc++.h> in test platforms
   unordered map , unordered set are C++11, and implemented using hashmap
 
 
-In inheritance, you have to override all overloaded methods.
+vector<int> v(10, 1) ---> creates a vector with 10 elements initialized to 1
+
+C++11
+Unordered map and set with user defined Hasher and Comparator -->
+Hasher --> hasing algorithm to use
+Comparator --> When are 2 hashes equal
+
+C++11
+class array -
+-- .at(index), .[index], .size(), .begin()-->.end(),  arry<int, 10> = {1, 2} --> first 2 fo 10 elements initialized, .fill(value)
+
+--------------------------------------------------------------------------------------------------------------------------
+
+To measure duration of a function  -
+system_clock::time_point start = system_clock:: now(); OR
+auto start = system_clock::now();
+auto end = system_clcok():: now();
+auto diff = duration_cast<chrono::seconds> (end-start).count();
+
+
+--------------------------------------------------------------------------------------------------------------------------
+In inheritance, you have to override all overloaded methods
+--------------------------------------------------------------------------------------------------------------------------
+
+lvalue is anything whose address you can access
+rvalue is everything that is not lvalue
+
+To declare a rvalue reference, we need to specify two & operator i.e. &&.
+int && rvalueRef = (x+1); // rvalueRef is rvalue reference
 
 --------------------------------------------------------------------------------------------------------------------------
 
 C++11 features - (the previosu version was C++03)
+
 Unordered containers
 - set, map
 thread class
@@ -332,6 +356,14 @@ auto keyword
 
 range based for loops --> for (int i : aVector) {}
 
+for_each loop using lamda function
+count_if, find_if, accumalate, sort(with third arg as lambda func) , distance, unique
+
+tuple -> intialize, make_tuple, get value
+
+move-contsructor-rvalue-references
+
+
 --------------------------------------------------------------------------------------------------------------------------
 
 To get a random number between 65 and 23 -->
@@ -342,10 +374,51 @@ To get a random number between 65 and 23 -->
 
 Multi threading - 
 
-Mutex vs Semaphore - 
-Mutex can be signalled only by the thread that called wait, semaphore can be signalled by other thread
+Multithreading is used to achieve concurrency. 
+Concurrency is when multiple copies of the program run simultaneouly while communicating with eachother
 
-What happens if you call thread.join twice?
+
+#include <thread>
+using namespace std;
+int main() {
+thread t1(someFunction)
+t1.join()
+t1.joint()  --> throws an exception if called twice
+return 0;
+}
+isJoinable is false and invalid argument exception is thrown
+
+thread t1(func, arg) or
+thread t2{fucn, arg}
+curly or round braces can be used
+
+to pass an argument by reference --> ref function is used
+
+thread t1 (func, ref(argByRef))
+
+You can print thread id using function this_thread::get_id();
+to wait inside a thread -- " this_thread::sleep_for(chrono::seconds(5));
+chrono --> means relating to time
+
+
+Asynchronous functions using <furture> 
+
+int asynchronousFunction1(int& a) {
+	cout << "Exceuting async function " << endl;
+	return a += 10;
+}
+
+future<int> future1 = async(launch::async, asynchronousFunction1, ref(i));
+cout << future1.get() << endl;
+
+launch::async -> can ::any, ::deffered --> function executed when future1.get() is called in the same thread
+
+thread objects cannot be copied, but moved
+vector<thread? v1;
+v.push_back(move(t1));
+
+Race conditon and mutex -->
+
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -368,13 +441,27 @@ Atomic operations -
 
 --------------------------------------------------------------------------------------------------------------------------
 
-TODO - 
+std::regex_match only returns true when the entire input sequence has been matched, 
+while std::regex_search will succeed even if only a sub-sequence matches the regex.
 
-Multithreading :
-Read and implement the following - 
-https://www.educative.io/blog/modern-multithreading-and-concurrency-in-cpp
-https://www.educative.io/blog/top-five-concurrency-interview-questions-for-software-engineers
-https://www.educative.io/blog/multithreading-and-concurrency-fundamentals
+Regex matching for alphanuneric string - 
+--   "^[a-zA-Z0-9]*$"
+
+^ : start of string
+[ : beginning of character group
+a-z : any lowercase letter
+A-Z : any uppercase letter
+0-9 : any digit
+] : end of character group
+* : zero or more of the given characters
+$ : end of string
+
+Define base regex - const regex base_regex("^[a-zA-Z]*$");
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+TODO - 
 
 Implement one lock free data structure
 
@@ -385,6 +472,7 @@ Readup on casting - static, const, reinterpret ..
 What is precompiled header?
 what is a multimap, ordered/unordered maps?
 how is set internally implemented - ordered (default), unordered
+load a dll and static library in your application
 
 --------------------------------------
 What is auto_ptr
@@ -392,8 +480,19 @@ How is shared pointer internally implemented
 Memory mapping in windows
 External debugging tool
 dynamic cast/re-interpret cast
+
+Shared pointer with custom deletor
+
 -------------------------------------------
 
 Add a list of data structures vs problems covered above
+
+
+https://thispointer.com/category/design-pattern/
+https://thispointer.com/c11-move-contsructor-rvalue-references/
+
+https://www.youtube.com/watch?v=KEEKn7Me-ms&list=PLI1t_8YX-ApvMthLj56t1Rf-Buio5Y8KL
+
+Bit manipulation...
 
 

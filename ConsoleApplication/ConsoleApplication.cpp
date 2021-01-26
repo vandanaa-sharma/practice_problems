@@ -2,131 +2,80 @@
 //
 
 #include "pch.h"
+#include <crtdbg.h>
 #include <iostream>
 #include <regex>
 #include <string>
 #include <stack>
-#include "vector.h"
-#include "SmartPointer.h"
-#include <crtdbg.h>
-#include "VirtualInheritance.h"
+
 #include "02_LinkedList.h"
 #include "10_BinaryTree_linkedlist.h"
 #include "11_Minimum_Heap_Using_Array.h"
 #include "12_MaxHeap_PriorityQueue.h"
 #include "14_Binary_tree_operations.h"
 
+#include "vector.h"
+#include "SmartPointer.h"
+#include "VirtualInheritance.h"
+#include "sorts.h"
+#include "MultiThreading.h"
+#include "TupleUsage.h"
+
 using namespace std;
 
-// Problem 01 - Print special characters in string
-void printSpecialCharacters(string s) {
-	for (int i = 0; i < s.size(); i++) {
-		int c = (int)s[i];
-		if ((c <= 65 && c >= 90) && (c >= 122 && c <= 97)) {
-			cout << c << endl;
-			cout << s[i] << endl;
-		}
-	}
-}
+namespace problem_set_one {
 
-void functionPointer(int i) {
-	cout << "Square = " << i * i << endl;
-}
-
-void funcPointerAsArgument(void (*f)(int), int j) {
-	cout << "Calling f -";
-	(*f)(j);
-}
-
-// Problem 04 - template function 
-template <class T>
-T GetMax(const T &a, const T &b) {
-	T result = a < b ? b : a;
-	return result;
-}
-
-// Problem 03 - Mutable vs const
-class TestMutable {
-private:
-	int i = 0;
-	mutable int j = 1;
-public:
-	void modifyVariables() const
-	{
-		// i++;               // Compile error because function is const
-		j++;
-		cout << "Const vs Mutable " << i << " " << j << endl;
-	}
-};
-
-/* ------------------- Merge Sort --------------------------- */
-
-/* End ----------------------- Merge Sort ------------------- */
-
-
-/* -------------------- Selection Sort -------------------------- */
-
-void selectionSort(int arr[], int size) {
-	for (int i = 0; i < size; i++) {
-		int min = arr[i];
-		int index = i;
-		for (int j = i; j < size; j++) {
-			if (arr[j] < min) {
-				min = arr[j];
-				index = j;
-			}
-		}
-		if (arr[i] != min) {
-			int temp = arr[i];
-			arr[i] = min;
-			arr[index] = temp;
-		}
-	}
-}
-
-/* End ----------------------- Selection Sort -------------------- */
-
-/* ------------------ Bubble Sort -------------------------- */
-void bubbleSort(int arr[], int size) {
-	for (int i = 0; i < size - 1; i++) {
-		for (int j = 0; j < size - i - 1; j++) {
-			if (arr[j] > arr[j+1]) {
-				int temp = arr[j];
-				arr[j] = arr[j+1];
-				arr[j+1] = temp;
+	// Problem 01 - Print special characters in string
+	void printSpecialCharacters(string s) {
+		for (int i = 0; i < s.size(); i++) {
+			int c = (int)s[i];
+			if ((c <= 65 && c >= 90) && (c >= 122 && c <= 97)) {
+				cout << c << endl;
+				cout << s[i] << endl;
 			}
 		}
 	}
-}
 
-/* End ----------------------- Bubble Sort------------------- */
-
-/* ------------------- Insertion Sort --------------------------- */
-
-void insertionSort(int arr[], int size) {
-	int i, j;
-	int key;
-	for (i = 1; i < size; i++) {
-		key = arr[i];
-		j = i - 1;
-		while (j >= 0 && arr[j] > key) {
-			arr[j + 1] = arr[j];
-			j--;
-		}
-		arr[j + 1] = key;
+	void functionPointer(int i) {
+		cout << "Square = " << i * i << endl;
 	}
+
+	void funcPointerAsArgument(void(*f)(int), int j) {
+		cout << "Calling f -";
+		(*f)(j);
+	}
+
+	// Problem 04 - template function 
+	template <class T>
+	T GetMax(const T &a, const T &b) {
+		T result = a < b ? b : a;
+		return result;
+	}
+
+	// Problem 03 - Mutable vs const
+	class TestMutable {
+	private:
+		int i = 0;
+		mutable int j = 1;
+	public:
+		void modifyVariables() const
+		{
+			// i++;               // Compile error because function is const
+			j++;
+			cout << "Const vs Mutable " << i << " " << j << endl;
+		}
+	};
 }
 
-
-/* End ----------------------- Insertion Sort ------------------- */
-
-int main()
+void problem_set1()
 {
+	using namespace problem_set_one;
+
 	// Problem 01 - Print special characters in string	
 	string s;
 	cin >> s;
 	printSpecialCharacters(s);
-	
+
 	/* -----------------------------------------------------------------------*/
 	// Problem 02 - Implementation of vector
 
@@ -150,7 +99,7 @@ int main()
 	int* const p = new int;
 	int j = 9;
 	//p = &j;                 // compile error - const after * --> pointer is constant,
-	                          // pointer cannot be modified
+							  // pointer cannot be modified
 
 	delete p;
 	delete i;
@@ -171,7 +120,7 @@ int main()
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 08 - exchange kth node of linked list from both ends
-	LinkedList list =  LinkedList();
+	LinkedList list = LinkedList();
 	list.add(0);
 	list.add(1);
 	list.add(2);
@@ -207,7 +156,6 @@ int main()
 
 	tree.printPretty();
 	cout << endl << "Tree Height - " << tree.getHeight() << endl;
-	
 
 	/* -----------------------------------------------------------------------*/
 
@@ -219,48 +167,24 @@ int main()
 
 	// Problem 11 - Sorting algorithms
 
-
-	// 01 - Merge Sort
-	//vector<int> mArray = { 6,5,7,3 };
-	//mergeSort(array, 0, array.size());
-
-	// 02 - Selection sort
-
+	// 01 - Selection sort
 	int sArray[] = { 6, 5, 7, 3, 11, 1 };
 	int size = sizeof(sArray) / sizeof(sArray[0]);
 	selectionSort(sArray, size);
 
-	// 03 - Bubble sort
-
+	// 02 - Bubble sort
 	int bArray[] = { 6, 5, 7, 3, 11, 1 };
 	int bsize = sizeof(bArray) / sizeof(bArray[0]);
 	bubbleSort(bArray, bsize);
 
-	// 04 - Insertion sort
-
+	// 03 - Insertion sort
 	int iArray[] = { 5, 4, 7, 8, 1, 2, 9, 0 };
 	int isize = sizeof(iArray) / sizeof(iArray[0]);
 	insertionSort(iArray, isize);
 
-	// 05 - Quick Sort
-
-
-	// 06 - Heap sort
-
-	int hArray[] = { 6, 5, 7, 3, 11, 1 };
-	int hsize = sizeof(hArray) / sizeof(hArray[0]);
-	// heapSort(hArray, bsize);
-
-	//cout << "Sorted Array - ";
-	//for (int y = 0; y < hsize; y++) {
-	//	cout << hArray[y] << " ";
-	//}
-	//cout << endl;
-
-
 	/* -----------------------------------------------------------------------*/
 	// Problem  - Padding and Packing
-	
+
 	struct A {
 		char p;
 		char q;
@@ -269,7 +193,7 @@ int main()
 	cout << "Size of structure A " << sizeof(A) << endl;
 	// | p | q | - | - | i | i | i | i |------------------- 32 bit (4 bytes) processor
 
-	#pragma pack(1) // ------------------ This prevents padding
+#pragma pack(1) // ------------------ This prevents padding
 	struct B {
 		char p;
 		char q;
@@ -282,15 +206,15 @@ int main()
 
 	// Problem 13 - Function Pointers
 	// store, call, pass as argument, return type, use in quick sort
-	void (*pf)(int) = functionPointer;
+	void(*pf)(int) = functionPointer;
 	(*pf)(9);
 	funcPointerAsArgument(functionPointer, 10);
 
 	/* -----------------------------------------------------------------------*/
 
 	// Problem 14 - Check if your system is Big Endian or Little Endian
-	unsigned int i = 1;
-	char* c = (char*)&i;
+	unsigned int q = 1;
+	char* c = (char*)&q;
 
 	if (*c) {
 		cout << "Little Endain " << endl;
@@ -334,126 +258,200 @@ int main()
 	pQ.printQueue();
 
 	/* -----------------------------------------------------------------------*/
-	// Problem 17 - Find least common ancestor for given node in binary tree
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 18 - Find all nodes smaller than given node in binary heap
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 19 - Print levels of binary tree
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 20 - Find mirror of Binary Tree
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 21 - Spiral Traveral Binary Tree
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 22 - Priority queue using insertion sort
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 22 - Fibonacci using dynamic programming
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 23 - Convert a number to binary
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 24 - Create integer from string
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 25 - Find all factors of a given number
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 26 - Find a random number in given range
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 27 - Implement your own unordered - set class using hashmap
-	// O(1) for insert and remove, unique elements
-    
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 28 - Implement your own unordered - map class using hashmap
-	// O(1) for insert and remove, unique elements
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 29 - C++ 11 features
+	 // Problem 29 - C++ 11 features - Part 1
 	 /*
 	 1. Lamba functions in C++
-	 2. auto keyword
-     3. Unordered sets and maps : stl
-     4. = delete, = default, explicit
-	 5. range based for loops
-	 6. smart pointers
-	 7. nullptr keyword
-	 8. thread class
+	 8. thread class - Covered in multithreading : Problem 17
+	 9. tuple
+	 10. all_of --> checks given function for all passed elements
+					breaks and returns false if condition is false, else returns true
+	 11. any_of, count_of, find_if
 	 */
 
+	 // 1 -> lambda function in range based loop
+	vector<int> v1(5, 0);
+	for_each(v1.begin(), v1.end(), [](int i) noexcept -> void { cout << i << " "; });
+	cout << endl;
 
+	// 9 ->  tuple 
+	tuple_usage();
 
-	 /* -----------------------------------------------------------------------*/
-	 // Problem 30 - Multithreading examples and features
-	 // Semaphore vs mutex
+	// 10 -> all_of
+	vector<int> v2(10, 5);
+	bool allFive = all_of(v2.begin(), v2.end(), [](int i)->bool { return i == 5; });
+	cout << allFive << endl;
 
-	/* -----------------------------------------------------------------------*/
-	// Problem 31 - Find cycle in a linked list
+	v2[3] = 6;
+	bool anySix = any_of(v2.begin(), v2.end(), [](int i)->bool { return i == 6; });
+	cout << anySix << endl;
 
+	int countFive = count_if(v2.begin(), v2.end(), [](int i)->bool { return  i == 5; });
+	cout << countFive << endl;
 
-	/* -----------------------------------------------------------------------*/
-	// Problem 32 - Remove all elements that occur more than once in sorted linked list
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 33 - Find median of an infinite list
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 34 - Find median of an infinite list
-
+	auto findSix = find_if(v2.begin(), v2.end(), [](int i)->bool { return i == 6; });
 
 	/* -----------------------------------------------------------------------*/
-	// Problem 35 - STL -> set, vector, map, multimap, tuple
-	// insert, sort, iterate, value at index, find, remove (front and back)
 
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 36 - Static and dynamic librariers
-
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem 37 - contst, static, dynamic and reinterpret casts
-
-
-	/* -----------------------------------------------------------------------*/
-	// Problem -- - Design Patterns 
-
-
-	_CrtDumpMemoryLeaks();
-	return 0;
 }
 
 
+void problem_set2() {
 
+	/* -----------------------------------------------------------------------*/
+	// Problem 17 -  Multithreading examples and features
+	multithreading();
+
+
+	// TODO - 
+	{
+		/* -----------------------------------------------------------------------*/
+		// Problem 18 - Find all nodes smaller than given node in binary heap
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 19 - Print levels of binary tree
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 20 - Find mirror of Binary Tree
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 21 - Spiral Traveral Binary Tree
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 22 - Priority queue using insertion sort
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 22 - Fibonacci using dynamic programming
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 23 - Convert a number to binary
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 24 - Create integer from string
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 25 - Find all factors of a given number
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 26 - Find a random number in given range
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 27 - Implement your own unordered - set class using hashmap
+		// O(1) for insert and remove, unique elements
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 28 - Implement your own unordered - map class using hashmap
+		// O(1) for insert and remove, unique elements
+
+
+
+		/* -----------------------------------------------------------------------*/
+		 // Problem 29 - C++ 11 features : Part 2
+		 /*
+		 2. auto keyword
+		 3. Unordered sets and maps : stl --> Use your own hash function and comparator
+		 4. = delete, = default, explicit
+		 5. range based for loops
+		 6. smart pointers
+		 7. nullptr keyword
+		 12. class array
+		 13. Move constructor and rvalue references
+		*/
+
+
+
+
+		/* -----------------------------------------------------------------------*/
+		// Problem 30 - FInd the least common ancestor of a node in binar search tree
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 31 - Find cycle in a linked list
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 32 - Remove all elements that occur more than once in sorted linked list
+
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 33 - Running median using a min and max heap
+
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 34 - Find median of an infinite list
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 35 - STL -> set, vector, map, multimap, tuple
+	   // insert, sort, iterate, value at index, find, remove (front and back)
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 36 - Static and dynamic librariers
+
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 37 - const, static, dynamic and reinterpret casts
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 38 - volatile keyword with multithreading example
+
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 39 - merge sort, quick sort, heap sort
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 40 - Check if a tree is a valid Binary Search Tree
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 41 - Implement queue using 2 stacks
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem 42 - Trie --> underline an invalid word
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem -- - Design Patterns 
+
+
+	   /* -----------------------------------------------------------------------*/
+	   // Problem -- - Bit manipulation
+
+	}
+
+}
+
+
+int main() {
+
+	// problem_set1();
+	problem_set2();
+
+	//_CrtDumpMemoryLeaks();
+	return 0;
+}
